@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Tennis Video Labeler</title>
+    </head>
+    <body>
+        <h1>Video {{.VideoID}} Clip {{.ClipID}}</h1>
+        <video width="640" height="360" controls autoplay>
+            <source src="{{.VideoURL}}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <form action="/save/{{.VideoID}}-{{.ClipID}}" method="POST">
+            <input type="radio" name="shot" value="0"> None<br>
+            <input type="radio" name="shot" value="1"> Forehand<br>
+            <input type="radio" name="shot" value="2"> Backhand<br>
+            <input type="radio" name="shot" value="3"> Volley<br>
+            <input type="radio" name="shot" value="4"> Serve<br>
+            <div><input type="submit" value="Save"></div>
+        </form>
+    </body>
+</html>

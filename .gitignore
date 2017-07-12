@@ -99,3 +99,12 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# macOS
+.DS_STORE
+
+# project specific
+/data
+*.db
+*.csv
+labelmaker/labelmaker
