@@ -10,12 +10,12 @@
             <source src="{{.VideoURL}}" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-        <form action="/save/{{.VideoID}}-{{.ClipID}}" method="POST">
-            <input type="radio" name="shot" value="0"> None<br>
-            <input type="radio" name="shot" value="1"> Forehand<br>
-            <input type="radio" name="shot" value="2"> Backhand<br>
-            <input type="radio" name="shot" value="3"> Volley<br>
-            <input type="radio" name="shot" value="4"> Serve<br>
+        <form action="/save/{{.VideoID}}/{{.ClipID}}" method="POST">
+            <input type="radio" name="shot" value="-1"> None<br>
+            <input type="radio" name="shot" value="0"> Forehand<br>
+            <input type="radio" name="shot" value="1"> Backhand<br>
+            <input type="radio" name="shot" value="2"> Volley<br>
+            <input type="radio" name="shot" value="3"> Serve<br>
             <div><input type="submit" value="Save"></div>
         </form>
     </body>

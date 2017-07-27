@@ -46,7 +46,7 @@ func main() {
 
 func saveHandler(w http.ResponseWriter, r *http.Request) {
 	viewID := r.URL.Path[len("/save/"):]
-	parts := strings.Split(viewID, "-")
+	parts := strings.Split(viewID, "/")
 	videoID := parts[0]
 	clipID := parts[1]
 
@@ -66,13 +66,13 @@ func saveHandler(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 
-	title := fmt.Sprintf("%s-%05d", videoID, clipInt+1)
+	title := fmt.Sprintf("%s/%05d", videoID, clipInt+1)
 	http.Redirect(w, r, "/view/"+title, http.StatusFound)
 }
 
 func videoHandler(w http.ResponseWriter, r *http.Request) {
 	viewID := r.URL.Path[len("/video/"):]
-	parts := strings.Split(viewID, "-")
+	parts := strings.Split(viewID, "/")
 	videoID := parts[0]
 	clipID := parts[1]
 
@@ -80,10 +80,10 @@ func videoHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, path)
 }
 
-// http://localhost:8080/view/dEtg6urGQBo-00000
+// http://localhost:8080/view/dEtg6urGQBo/000000
 func viewHandler(w http.ResponseWriter, r *http.Request) {
 	viewID := r.URL.Path[len("/view/"):]
-	parts := strings.Split(viewID, "-")
+	parts := strings.Split(viewID, "/")
 	videoID := parts[0]
 	clipID := parts[1]
 	type labelView struct {

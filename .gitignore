@@ -108,3 +108,5 @@ ENV/
 *.db
 *.csv
 labelmaker/labelmaker
+logs
+*.h5
