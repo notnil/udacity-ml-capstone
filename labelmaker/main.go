@@ -75,12 +75,11 @@ func videoHandler(w http.ResponseWriter, r *http.Request) {
 	parts := strings.Split(viewID, "/")
 	videoID := parts[0]
 	clipID := parts[1]
-
 	path := fmt.Sprintf("%s/%s/%s.mp4", clipPath, videoID, clipID)
 	http.ServeFile(w, r, path)
 }
 
-// http://localhost:8080/view/dEtg6urGQBo/000000
+// http://localhost:8080/view/dEtg6urGQBo/00000
 func viewHandler(w http.ResponseWriter, r *http.Request) {
 	viewID := r.URL.Path[len("/view/"):]
 	parts := strings.Split(viewID, "/")
