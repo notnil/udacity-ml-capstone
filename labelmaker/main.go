@@ -39,11 +39,14 @@ func main() {
 	http.HandleFunc("/video/", videoHandler)
 	http.HandleFunc("/view/", viewHandler)
 	http.HandleFunc("/save/", saveHandler)
-	if err := http.ListenAndServe(":8080", nil); err != nil {
+	if err := http.ListenAndServe(":"+port, nil); err != nil {
 		log.Fatal(err)
 	}
 }
 
+// saveHandler parses the form body, inserts a label into the db,
+// and redirects to view the next clip.
+// Format: /save/:video_id/:clip_id
 func saveHandler(w http.ResponseWriter, r *http.Request) {
 	viewID := r.URL.Path[len("/save/"):]
 	parts := strings.Split(viewID, "/")
@@ -70,6 +73,8 @@ func saveHandler(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/view/"+title, http.StatusFound)
 }
 
+// videoHandler serves the mp4 file for the clip
+// Format: /video/:video_id/:clip_id
 func videoHandler(w http.ResponseWriter, r *http.Request) {
 	viewID := r.URL.Path[len("/video/"):]
 	parts := strings.Split(viewID, "/")
@@ -79,7 +84,9 @@ func videoHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, path)
 }
 
-// http://localhost:8080/view/dEtg6urGQBo/00000
+// viewHandler shows the form and video for a clip.
+// Format: /view/:video_id/:clip_id
+// Example: http://localhost:8080/view/dEtg6urGQBo/00000
 func viewHandler(w http.ResponseWriter, r *http.Request) {
 	viewID := r.URL.Path[len("/view/"):]
 	parts := strings.Split(viewID, "/")
