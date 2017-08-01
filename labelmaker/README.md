@@ -7,13 +7,13 @@ Labelmaker is a go program for labeling clips for the tennis shot classifier.  I
 
 ## Usage
 
-The program requires go and glide to be installed.
-- [Install Go](https://golang.org/dl/)
-- [Install Glide](https://glide.sh)
+The entire repo and all its dependencies have been built into a docker image.  To get the image run the following command:
 
-To start labelmaker run the following command:
+To run the labelmaker run the following command:
 ```bash
-make run
+docker run -it -p 9090:9090 loganjspears/udacity-ml-capstone:1.0.0 bash
+> cd labelmaker
+> make run
 ```
 
 To start labeling a video find one in ../data/videos folder and go to the following url:
