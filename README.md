@@ -8,6 +8,11 @@ For my Udacity Machine Learning Capstone project I chose to implement a tennis s
 
 #### Prediction: Volley
 
+## Reports
+
+- [Final Report](report.pdf)
+- [Proposal](proposal.pdf)
+
 ## Installation
 
 The entire repo and all its dependencies have been built into a docker image.  To get the image run the following command:
